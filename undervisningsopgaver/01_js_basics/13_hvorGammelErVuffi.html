@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h3>Udregning af din hunds menneskealder med den gamle metode</h3>
+    <p>Hvor gammel er din hund?</p>
+    <input type="text" id="gammel">
+    <button id="gammelbutton">Klik og beregn den gamle menneskealder, kig i konsollen</button>
+    <h3>Udregning af din hunds menneskealder med den nye metode</h3>
+    <p>Hvor gammel er din hund?</p>
+    <input type="text" id="ny">
+    <button id="nybutton">Klik og beregn den nye menneskealder, kig i konsollen</button>
+
+
+    <script>
+        document.querySelector("#gammelbutton").addEventListener("click", gammelButtonClicked);
+
+        function gammelButtonClicked() {
+            let gammel = document.querySelector("#gammel").value;
+
+            let resultat = gammel * 7;
+
+            console.log(resultat);
+        }
+
+        document.querySelector("#nybutton").addEventListener("click", nyButtonClicked);
+
+        function nyButtonClicked() {
+            let ny = document.querySelector("#ny").value;
+
+            let resultat = 16 * Math.log(ny) + 31;
+
+            console.log(resultat);
+        }
+    </script>
+</body></html>
