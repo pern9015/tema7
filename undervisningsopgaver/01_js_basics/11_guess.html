@@ -10,25 +10,30 @@
 
 <body>
     <p>Gæt et tilfældigt tal mellem 1 og 20</p>
-    <input type="text" id="tal">
+    <input type="text" id="guess">
     <button>Klik og se om det var det rigtige tal, kig i konsollen</button>
     <script>
-        let længde = 30;
-        let bredde = 4;
-        let areal = længde * bredde;
-        let resultat;
+        document.querySelector("button").addEventListener("click", buttonClicked);
 
-        if (areal < 100) {
-            resultat = "Arealet er for lille";
+        function buttonClicked() {
+            let guess = document.querySelector("#guess").value;
+            let tal = Math.round(Math.random() * 20);
+            let resultat;
 
-        } else if (areal < 200) {
+            if (guess < tal) {
+                resultat = "Tallet er højere end det du gættede på. Prøv igen!";
 
-            resultat = "Arealet er OK";
+            } else if (guess > tal) {
+                resultat = "Tallet er lavere end det du gættede på. Prøv igen!";
 
-        } else {
-            resultat = "Arealet er for stort";
+            } else if (guess = tal) {
+                resultat = `Tillykke du gættede det rigtige tal. Du brugte gæt. Vil du prøve igen med et nyt tal?`;
+            }
+
+            console.log(resultat);
         }
 
-        console.log(resultat);
     </script>
-</body></html>
+</body>
+
+</html>
