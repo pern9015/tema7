@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
-        h1 {
+        body {
+            margin: 0;
+        }
+
+        header {
             text-align: center;
 
         }
@@ -27,16 +31,24 @@
 
         section {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         }
 
         img {
             width: 100%;
         }
 
+        header {
+            padding: 0px 0;
+            border: 1px solid #888;
+        }
+
         footer {
             text-align: center;
+            padding: 10px 0;
+            border: 1px solid #888;
         }
+
     </style>
 
 
@@ -62,7 +74,19 @@
         </section>
     </main>
     <footer>
-        <p>This is a footer</p>
+        This is a footer
     </footer>
-    <script src=""></script>
-</body></html>
+    <script>
+        const titel = document.querySelector("header");
+        titel.textContent = "Billedgalleri";
+        titel.innerHTML = "<h1>Billeder</h1>"
+
+        //da dette er det første billede i den første article kan man nøjes med at skrive "article img" men for at være mere specific kan man skrive firstchild
+        const pic1 = document.querySelector("article:first-child img")
+        console.log(pic1);
+        pic1.alt = "Billede af strand";
+
+    </script>
+</body>
+
+</html>
