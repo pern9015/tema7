@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+
+        }
+
+        h2 {
+            margin-left: 25px;
+        }
+
+        article {
+            border: 1px solid black;
+            margin: 0px 30px 20px 30px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        img {
+            width: 100%;
+        }
+
+        header {
+            padding: 0px 0;
+            border: 1px solid #888;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            border: 1px solid #888;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Undertitel</h2>
+        <section>
+            <article>
+                <img src="placeimg_640_480_nature-2.jpg" alt="">
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam repellendus aut praesentium sint. Minus eaque autem quae similique ad. Accusamus repudiandae esse enim eaque, earum quaerat corporis error unde nihil.</p>
+            </article>
+            <article>
+                <img src="placeimg_640_480_nature.jpg" alt="">
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam repellendus aut praesentium sint. Minus eaque autem quae similique ad. Accusamus repudiandae esse enim eaque, earum quaerat corporis error unde nihil.</p>
+            </article>
+        </section>
+    </main>
+    <footer>
+        This is a footer
+    </footer>
+    <script>
+        //udskift tekseten i titlen ved hjælp af javascript
+        const titel = document.querySelector("header");
+        titel.textContent = "Billedgalleri";
+        titel.innerHTML = "<h1>Billeder</h1>"
+
+        const article1 = document.querySelector("article h3");
+        article1.textContent = "First article";
+
+        const article2 = document.querySelector("article:last-child h3");
+        article2.innerHTML = "<br> second article";
+    </script>
+</body></html>
