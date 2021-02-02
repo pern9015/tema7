@@ -48,7 +48,6 @@
             padding: 10px 0;
             border: 1px solid #888;
         }
-
     </style>
 
 
@@ -78,15 +77,21 @@
     </footer>
     <script>
         const titel = document.querySelector("header");
-        titel.textContent = "Billedgalleri";
-        titel.innerHTML = "<h1>Billeder</h1>"
-
-        //da dette er det første billede i den første article kan man nøjes med at skrive "article img" men for at være mere specific kan man skrive firstchild
+        console.log(titel)
+        const h2 = document.querySelector("h2");
+        console.log(h2)
         const pic1 = document.querySelector("article:first-child img")
         console.log(pic1);
-        pic1.alt = "Billede af strand";
+        const article1 = document.querySelector("article:first-child h3")
+        console.log(article1);
+        const tekst1 = document.querySelector("article:first-child p")
+        console.log(tekst1);
 
+        const pic2 = document.querySelector("article:last-child img")
+        console.log(pic2);
+        const article2 = document.querySelector("article:last-child h3")
+        console.log(article2);
+        const tekst2 = document.querySelector("article:last-child p")
+        console.log(tekst2);
     </script>
-</body>
-
-</html>
+</body></html>
