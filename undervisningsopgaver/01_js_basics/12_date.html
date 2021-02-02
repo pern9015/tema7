@@ -16,32 +16,35 @@
     <button>Klik og beregn om din date og dig overholder reglerne, kig i konsollen</button>
 
     <script>
+        let dig;
+        let date;
+        let minimumAlder
+        let maximumAlder
+
         document.querySelector("button").addEventListener("click", buttonClicked);
 
         function buttonClicked() {
-            let dig = document.querySelector("#dig").value;
-            let date = document.querySelector("#date").value;
-            let dinudregning = dig / 2 + 7;
-            let dateudregning = date / 2 + 7;
-            let resultat;
+            dig = document.querySelector("#dig").value;
+            date = document.querySelector("#date").value;
+            //hvad er det yngste din date må være
+            minimumAlder = Math.round(dig / 2 + 7);
+            maximumAlder = Math.round(dig - 7 * 2);
 
-            if (dinudregning == date) {
-                resultat = "Din date og dig overholder reglerne";
+            console.log("minimumAlder", maximumAlder);
+            console.log("maximumAlder", minimumAlder);
 
-            } else if (dateudregning == dig) {
-                resultat = "Din date og dig overholder reglerne";
-
-            } else if (dig <= 15) {
-                resultat = "fy, du er ikke gammel nok";
-
-            } else if (date <= 15) {
-                resultat = "fy, find dog en der er over 15 - er du pædofil?";
-
+            if (dig < 15 || date < 15) {
+                console.log("En af parterne er for unge")
+                // her laves en nestet if-sætning
             } else {
-                resultat = "Din date og dig overholder ikke reglerne, find en anden!";
+                if (date >= minimumAlder && date <= maximumAlder) {
+                    console.log("Det er passende")
+                } else if (date < minimumAlder) {
+                    console.log(`Du er ${dig} og din date er ${date}. Din date er ${minimumAlder-date} år for ung`)
+                } else if (date >= maximumAlder) {
+                    console.log((`Du er ${dig} og din date er ${date}. Din date er ${date-maximumAlder} år for gemmel`))
+                }
             }
-
-            console.log(resultat);
         }
     </script>
 </body></html>

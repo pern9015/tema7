@@ -13,27 +13,27 @@
     <input type="text" id="guess">
     <button>Klik og se om det var det rigtige tal, kig i konsollen</button>
     <script>
+        const tal = Math.round(Math.random() * 20);
+        let antalGuess = 0;
+
         document.querySelector("button").addEventListener("click", buttonClicked);
 
         function buttonClicked() {
+            antalGuess++;
             let guess = document.querySelector("#guess").value;
-            let tal = Math.round(Math.random() * 20);
-            let resultat;
+            //console.log ("tal", tal);
+            console.log("brugergæt", guess);
 
             if (guess < tal) {
-                resultat = "Tallet er højere end det du gættede på. Prøv igen!";
+                console.log("Tallet er højere end det du gættede på. Prøv igen!");
 
             } else if (guess > tal) {
-                resultat = "Tallet er lavere end det du gættede på. Prøv igen!";
+                console.log("Tallet er lavere end det du gættede på. Prøv igen!");
 
             } else if (guess = tal) {
-                resultat = `Tillykke du gættede det rigtige tal. Du brugte gæt. Vil du prøve igen med et nyt tal?`;
+                console.log(`Tillykke du gættede det rigtige tal. Du brugte ${antalGuess} gæt. Vil du prøve igen med et nyt tal?`);
             }
 
-            console.log(resultat);
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
