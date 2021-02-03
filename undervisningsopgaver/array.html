@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <h1>Playliste</h1>
+
+    <ul id="display"></ul>
+
+    <script>
+        const playliste = ["two of us", "Dig a pony", "Across the universe", "I me mine", "Dig it", "Let it be", "Maggie mae", "I´ve got a feeling", "one after 909", "The long and winding road", "For you blue", "Get back"];
+
+        // i playlisten tager vi hvert nummer (nummer repræssentere et element af mit array af gangen) og for hvert nummer tilføjer vi et liste element og nummerts værdi (navnet)
+        playliste.forEach(nummer => display.innerHTML += "<li>" + nummer + "</li>");
+    </script>
+</body></html>
