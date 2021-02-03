@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+
+        }
+
+        h2 {
+            margin-left: 25px;
+        }
+
+        article {
+            border: 1px solid black;
+            margin: 0px 30px 20px 30px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        img {
+            width: 100%;
+        }
+
+        header {
+            padding: 0px 0;
+            border: 1px solid #888;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            border: 1px solid #888;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Undertitel</h2>
+        <section>
+            <article>
+                <img src="https://placeimg.com/640/480/nature">
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam repellendus aut praesentium sint. Minus eaque autem quae similique ad. Accusamus repudiandae esse enim eaque, earum quaerat corporis error unde nihil.</p>
+            </article>
+            <article>
+                <img src="https://placeimg.com/640/480/any" id="display" alt="">
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam repellendus aut praesentium sint. Minus eaque autem quae similique ad. Accusamus repudiandae esse enim eaque, earum quaerat corporis error unde nihil.</p>
+            </article>
+        </section>
+    </main>
+    <footer>
+        This is a footer
+    </footer>
+    <script>
+        //udskift tekseten i titlen ved hjælp af javascript
+        const titel = document.querySelector("header");
+        titel.textContent = "Billedgalleri";
+        titel.innerHTML = "<h1>Billeder</h1>"
+
+        const article1 = document.querySelector("article h3");
+        article1.textContent = "First article";
+
+        const article2 = document.querySelector("article:last-child h3");
+        article2.innerHTML = "<br> second article";
+
+
+        const pic3 = document.querySelector("article:first-child img")
+        console.log(pic3);
+        pic3.src = "placeimg_640_480_animals-2.jpg";
+
+        const pic4 = document.querySelector("article:last-child img")
+        console.log(pic4);
+        pic4.src = "placeimg_640_480_animals.jpg";
+
+
+        //tilføj tekst i alt atributten til billederne
+        const pic1 = document.querySelector("article:first-child img")
+        console.log(pic1);
+        pic1.alt = "Billede af strand";
+
+        const pic2 = document.querySelector("article:last-child img")
+        console.log(pic2);
+        pic2.alt = "Billede af bro";
+
+
+        //øvelse 4
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("dom er loaded")
+
+            let mainSection = document.querySelector("section");
+            //tilføj et nyt article element:
+            let newArticle = document.createElement("article");
+            //nyt h3 element
+            let overskrift = document.createElement("h3");
+            let img = document.createElement("img");
+            let tekst = document.createElement("p");
+            // tekst til overskriften
+            let overskriftText = document.createTextNode("Article 3");
+            let Text = document.createTextNode("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam repellendus aut praesentium sint. Minus eaque autem quae similique ad. Accusamus repudiandae esse enim eaque, earum quaerat corporis error unde nihil.");
+            img.src = "placeimg_640_480_nature.jpg";
+            //indsæt tekst i overskrift
+            overskrift.appendChild(overskriftText);
+            tekst.appendChild(Text);
+            //tilføj overskrift til article
+            newArticle.appendChild(overskrift);
+            newArticle.appendChild(img);
+            newArticle.appendChild(tekst);
+            // tilføj article til section
+            mainSection.appendChild(newArticle);
+        }
+
+        document.querySelector("article:nth-child(1) img").addEventListener("click", skiftBillede);
+
+        function skiftBillede() {
+            const pic5 = document.querySelector("article:nth-child(1) img")
+            console.log(pic5);
+            pic3.src = "https://placeimg.com/640/480/any"
+        }
+
+
+
+        //øvelse 9b
+        const Kategori = ["animals", "arch", "people", "nature", "tech"];
+
+        document.querySelector("article:nth-child(2) img").addEventListener("click", skift);
+
+        function skift() {
+            const nummer = Math.round(Math.random() * 4);
+            display.src = "https://placeimg.com/640/480/any" + Kategori[nummer];
+            display.alt = Kategori[nummer];
+        }
+    </script>
+</body></html>
