@@ -49,12 +49,11 @@
             border: 1px solid #888;
         }
 
-        article {
+        .shadow {
             box-shadow: 14px 10px 6px 0px rgba(164, 119, 255, 0.66);
             -webkit-box-shadow: 14px 10px 6px 0px rgba(164, 119, 255, 0.66);
             -moz-box-shadow: 14px 10px 6px 0px rgba(164, 119, 255, 0.66);
         }
-
     </style>
 
 
@@ -150,7 +149,12 @@
             pic3.src = "placeimg_640_480_tech.jpg";
         }
 
-    </script>
-</body>
 
-</html>
+        const boxShadow = document.querySelectorAll(".shadow");
+        boxShadow.forEach(shadow => shadow.addEventListener("mouseover", fjern));
+
+        function fjern() {
+            this.classList.toggle("fjern")
+        }
+    </script>
+</body></html>
