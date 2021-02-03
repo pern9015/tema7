@@ -53,6 +53,8 @@
             box-shadow: 14px 10px 6px 0px rgba(164, 119, 255, 0.66);
             -webkit-box-shadow: 14px 10px 6px 0px rgba(164, 119, 255, 0.66);
             -moz-box-shadow: 14px 10px 6px 0px rgba(164, 119, 255, 0.66);
+
+            transition: 1s;
         }
     </style>
 
@@ -66,12 +68,12 @@
     <main>
         <h2>Undertitel</h2>
         <section>
-            <article>
+            <article class="shadow">
                 <img src="placeimg_640_480_nature-2.jpg" alt="">
                 <h3>Article 1</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam repellendus aut praesentium sint. Minus eaque autem quae similique ad. Accusamus repudiandae esse enim eaque, earum quaerat corporis error unde nihil.</p>
             </article>
-            <article>
+            <article class="shadow">
                 <img src="placeimg_640_480_nature.jpg" alt="">
                 <h3>Article 2</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam repellendus aut praesentium sint. Minus eaque autem quae similique ad. Accusamus repudiandae esse enim eaque, earum quaerat corporis error unde nihil.</p>
@@ -139,21 +141,31 @@
             newArticle.appendChild(tekst);
             // tilføj article til section
             mainSection.appendChild(newArticle);
-        }
+            newArticle.classList.add("shadow");
 
-        document.querySelector("article:first-child img").addEventListener("click", skiftBillede);
 
-        function skiftBillede() {
-            const pic5 = document.querySelector("article:first-child img")
-            console.log(pic5);
-            pic3.src = "placeimg_640_480_tech.jpg";
-        }
+            document.querySelector("article:first-child img").addEventListener("click", skiftBillede);
 
-        const boxShadow = document.querySelectorAll(".shadow");
-        boxShadow.forEach(shadow => shadow.addEventListener("mouseover", fjern));
+            function skiftBillede() {
+                const pic5 = document.querySelector("article:first-child img")
+                console.log(pic5);
+                pic3.src = "placeimg_640_480_tech.jpg";
+            }
 
-        function fjern() {
-            this.classList.toggle("shadow")
+
+            const boxShadow = document.querySelectorAll("article");
+            boxShadow.forEach((box) => {
+                box.addEventListener("mouseover", fjern);
+                box.addEventListener("mouseout", add);
+            });
+
+            function fjern() {
+                this.classList.remove("shadow");
+            }
+
+            function add() {
+                this.classList.add("shadow");
+            }
         }
     </script>
 </body></html>
