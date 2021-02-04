@@ -28,43 +28,27 @@
     </template>
 
     <script>
+        const container = document.querySelector(".data-container");
+        const dyrTemplate = document.querySelector("template");
+
+        //Dyrene skal nu indlæses fra json-filen med fetch og vises på siden.
+        //hent json-filen ind så vi kan loope igennem den og vise dyrene igen.
+        const fil = "alleDyr.json"
+
+        async function hentdata(fil) {
+            //fetch filen
+            const result = await fetch(fil);
+            //Når den har fetchet filen, så fisk json ud af den, gem den i variablen json
+            const json = await result.json();
+            //tag json og kør funktionen.
+            vis(json);
+        }
         //test om DOM er loaded
         document.addEventListener("DOMContentLoaded", start);
-
-        let alleDyr = [{
-            "navn": "frø",
-            "type": "amfibie",
-            "levested": "sump",
-            "billede": "http://mabe-kea.dk/E19/pics/frog.png"
-        }, {
-            "navn": "gris",
-            "type": "pattedyr",
-            "levested": "svinefarm",
-            "billede": "http://mabe-kea.dk/E19/pics/pig.png"
-        }, {
-            "navn": "ræv",
-            "type": "pattedyr",
-            "levested": "skov",
-            "billede": "http://mabe-kea.dk/E19/pics/fox.png"
-        }, {
-            "navn": "sild",
-            "type": "fisk",
-            "levested": "havet",
-            "billede": "http://mabe-kea.dk/E19/pics/sild.jpg"
-        }, {
-            "navn": "krokodille",
-            "type": "krybdyr",
-            "levested": "ørken",
-            "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
-        }];
-
-
 
         function start() {
             console.log("dom er loaded")
 
-            const container = document.querySelector(".data-container");
-            const dyrTemplate = document.querySelector("template");
             //løb dyrelisten igennem og indsæt i en template
             alleDyr.forEach(dyr => {
                 //placer dyr i html
@@ -76,5 +60,7 @@
                 container.appendChild(klon);
             })
         }
+
+        hentdata(fil);
     </script>
 </body></html>
