@@ -28,9 +28,6 @@
     </template>
 
     <script>
-        const container = document.querySelector(".data-container");
-        const dyrTemplate = document.querySelector("template");
-
         //Dyrene skal nu indlæses fra json-filen med fetch og vises på siden.
         //hent json-filen ind så vi kan loope igennem den og vise dyrene igen.
         const fil = "alleDyr.json"
@@ -48,18 +45,24 @@
 
         function start() {
             console.log("dom er loaded")
+        }
+
+        function vis(json) {
+            const container = document.querySelector(".data-container");
+            const dyrTemplate = document.querySelector("template");
 
             //løb dyrelisten igennem og indsæt i en template
-            alleDyr.forEach(dyr => {
+            json.forEach(dyr => {
                 //placer dyr i html
-                let klon = dyrTemplate.cloneNode(true).content;
+                const klon = dyrTemplate.cloneNode(true).content;
                 klon.querySelector("h3").textContent = dyr.navn;
                 klon.querySelector("img").src = dyr.billede;
                 klon.querySelector(".type").textContent += dyr.type;
                 klon.querySelector(".levested").textContent += dyr.levested;
                 container.appendChild(klon);
-            })
+            });
         }
+
 
         hentdata(fil);
     </script>
