@@ -9,14 +9,22 @@
 </head>
 
 <body>
+    <section class="data-container"></section>
+    <template>
+        <article id="liste">
+            <h3></h3>
+            <img src="" alt="">
+            <p class="type">Type: </p>
+            <p class="levested">Levested: </p>
 
-    <article id="liste">
-        <p></p>
-        <img src="" alt="">
-    </article>
+        </article>
+    </template>
 
     <script>
-        let dyr = [{
+        //test om DOM er loaded
+        document.addEventListener("DOMContentLoaded", start);
+
+        let alleDyr = [{
             "navn": "frø",
             "type": "amfibie",
             "levested": "sump",
@@ -41,19 +49,24 @@
             "type": "krybdyr",
             "levested": "ørken",
             "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
-        }, ]
+        }, ];
 
-        //test om DOM er loaded
-        document.addEventListener("DOMContentLoaded", start);
+
 
         function start() {
             console.log("dom er loaded")
 
-            const listevisning = document.querySelector("#liste");
-            //løb dyrelisten igennem og indsæt i #liste
-            dyr.forEach(dyr => {
+            const container = document.querySelector(".data-container");
+            const dyrTemplate = document.querySelector("template");
+            //løb dyrelisten igennem og indsæt i en template
+            alleDyr.forEach(dyr => {
                 //placer dyr i html
-                listevisning.innerHTML += `<p>${dyr.navn}, ${dyr.type} fra ${dyr.levested}</p>`
+                let klon = dyrTemplate.cloneNode(true).content;
+                klon.querySelector("h3").textContent = dyr.navn;
+                klon.querySelector("img").src = dyr.billede;
+                klon.querySelector(".type").textContent += dyr.type;
+                klon.querySelector(".levested").textContent += dyr.levested;
+                container.appendChild(klon);
             })
         }
     </script>
