@@ -12,6 +12,7 @@
             border: 1px solid black;
             margin: 5px;
         }
+
     </style>
 </head>
 
@@ -28,23 +29,23 @@
     </template>
 
     <script>
+        //test om DOM er loaded
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("dom er loaded")
+        }
         //Dyrene skal nu indlæses fra json-filen med fetch og vises på siden.
         //hent json-filen ind så vi kan loope igennem den og vise dyrene igen.
         const fil = "alleDyr.json"
 
         async function hentdata(fil) {
             //fetch filen
-            const result = await fetch(fil);
+            const resultat = await fetch(fil);
             //Når den har fetchet filen, så fisk json ud af den, gem den i variablen json
-            const json = await result.json();
+            const json = await resultat.json();
             //tag json og kør funktionen.
             vis(json);
-        }
-        //test om DOM er loaded
-        document.addEventListener("DOMContentLoaded", start);
-
-        function start() {
-            console.log("dom er loaded")
         }
 
         function vis(json) {
@@ -62,8 +63,9 @@
                 container.appendChild(klon);
             });
         }
-
-
         hentdata(fil);
+
     </script>
-</body></html>
+</body>
+
+</html>
